@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Charlton-H/portfolio-generator/issues"
   },
-  "homepage": "https://github.com/Charlton-H/portfolio-generator#readme"
+  "homepage": "https://github.com/Charlton-H/portfolio-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
 }
