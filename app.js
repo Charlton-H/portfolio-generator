@@ -145,20 +145,39 @@ Add a New Project
 promptUser()
   .then(promptProject)
   .then((portfolioData) => {
-    const pageHTML = generatePage(portfolioData);
-    fs.writeFile("./dist/index.html", pageHTML, (err) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      console.log("Page created! Check out index.html to see the output!");
-
-      fs.copyFile("./src/style.css", "./dist/style.css", (err) => {
-        if (err) {
-          console.log(err);
-          return;
-        }
-        console.log("Style sheet copied successfully!");
-      });
-    });
+    return generatePage(portfolioData);
+  })
+  .then((pageHTML) => {
+    return fs.writeFile(pageHTML);
+  })
+  .then((writeFileReponse) => {
+    console.log(writeFileReponse);
+    return copyFile();
+  })
+  .then((copyFileResponse) => {
+    console.log(copyFileResponse);
+  })
+  .catch((err) => {
+    console.log(err);
   });
+
+// promptUser()
+//   .then(promptProject)
+//   .then((portfolioData) => {
+//     const pageHTML = generatePage(portfolioData);
+//     fs.writeFile("./dist/index.html", pageHTML, (err) => {
+//       if (err) {
+//         console.log(err);
+//         return;
+//       }
+//       console.log("Page created! Check out index.html to see the output!");
+
+//       fs.copyFile("./src/style.css", "./dist/style.css", (err) => {
+//         if (err) {
+//           console.log(err);
+//           return;
+//         }
+//         console.log("Style sheet copied successfully!");
+//       });
+//     });
+//   });
